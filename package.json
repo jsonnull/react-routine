@@ -1,6 +1,6 @@
 {
   "name": "react-routine",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A new way to approach building stateful React components.",
   "main": "dist/react-routine.js",
   "module": "src/index.js",
