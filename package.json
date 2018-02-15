@@ -2,14 +2,15 @@
   "name": "react-routine",
   "version": "0.1.0",
   "description": "A new way to approach building stateful React components.",
-  "main": "dist/redux-routine.js",
+  "main": "dist/react-routine.js",
   "module": "src/index.js",
   "repository": "https://github.com/jsonnull/react-routine",
   "author": "Jason Nall <jsonnull@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build:umd": "cross-env BABEL_ENV=development NODE_ENV=development rollup -c -o dist/redux-routine.js",
-    "build:umd:min": "cross-env BABEL_ENV=production NODE_ENV=production rollup -c -o dist/redux-routine.min.js",
+    "build:umd": "cross-env BABEL_ENV=development NODE_ENV=development rollup -c -o dist/react-routine.js",
+    "build:umd:min": "cross-env BABEL_ENV=production NODE_ENV=production rollup -c -o dist/react-routine.min.js",
+    "watch": "cross-env BABEL_ENV=development NODE_ENV=development rollup -c -o dist/react-routine.js --watch",
     "build": "npm run build:umd && npm run build:umd:min",
     "test": "jest",
     "test:coverage": "jest --coverage && cat ./coverage/lcov.info | coveralls"
