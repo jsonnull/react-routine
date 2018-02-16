@@ -7,6 +7,9 @@ An alternate way to write React components, focusing on simple control flow and 
 **Unstable, expect breaking changes in the near future.**
 
 ```JavaScript
+import React from 'react'
+import { routine, setState, componentWillMount } from 'react-routine'
+
 const controller = function*() {
   // Wait for component to begin mounting
   yield componentWillMount()
