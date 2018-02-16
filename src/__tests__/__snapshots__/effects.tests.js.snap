@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`effects should create a componentDidCatch effect 1`] = `
+Object {
+  "type": "COMPONENT_DID_CATCH",
+}
+`;
+
+exports[`effects should create a componentDidMount effect 1`] = `
+Object {
+  "type": "COMPONENT_DID_MOUNT",
+}
+`;
+
+exports[`effects should create a componentDidUpdate effect 1`] = `
+Object {
+  "type": "COMPONENT_DID_UPDATE",
+}
+`;
+
+exports[`effects should create a componentWillMount effect 1`] = `
+Object {
+  "type": "COMPONENT_WILL_MOUNT",
+}
+`;
+
+exports[`effects should create a componentWillUnmount effect 1`] = `
+Object {
+  "type": "COMPONENT_WILL_UNMOUNT",
+}
+`;
+
+exports[`effects should create a componentWillUpdate effect 1`] = `
+Object {
+  "type": "COMPONENT_WILL_UPDATE",
+}
+`;
+
+exports[`effects should create a forceUpdate effect 1`] = `
+Object {
+  "type": "FORCE_UPDATE",
+}
+`;
+
+exports[`effects should create a oneOf effect 1`] = `
+Array [
+  Object {
+    "type": "COMPONENT_WILL_MOUNT",
+  },
+  Object {
+    "type": "COMPONENT_WILL_UNMOUNT",
+  },
+]
+`;
+
+exports[`effects should create a render effect 1`] = `
+Object {
+  "type": "RENDER",
+}
+`;
