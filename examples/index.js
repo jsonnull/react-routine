@@ -1,10 +1,12 @@
+// @flow
 import React from 'react'
+import ReactDom from 'react-dom'
 import {
   routine,
   setState,
   componentWillMount,
   createHandlers
-} from '../../dist/react-routine'
+} from '../dist/react-routine'
 
 const controller = function*() {
   // Get the initial props
@@ -24,6 +26,16 @@ const controller = function*() {
   }
 }
 
-const Input = props => <input value={props.value} onChange={props.onChange} />
+const Component = props => (
+  <div>
+    <h1>{props.value}</h1>
+    <input value={props.value} onChange={props.onChange} />
+  </div>
+)
 
-export default routine(controller)(Input)
+const EnhancedComponent = routine(controller)(Component)
+
+ReactDom.render(
+  <EnhancedComponent value="React Routine" />,
+  (document.getElementById('root'): any)
+)
