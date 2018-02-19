@@ -1,3 +1,4 @@
+// @flow
 import routine from './routine'
 import {
   setState,
@@ -11,7 +12,7 @@ import {
   componentDidUpdate,
   componentDidCatch,
   oneOf,
-  createHandler
+  createHandlers
 } from './effects'
 
 export default {
@@ -27,5 +28,5 @@ export default {
   componentDidUpdate,
   componentDidCatch,
   oneOf,
-  createHandler
+  createHandlers
 }

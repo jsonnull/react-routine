@@ -12,7 +12,7 @@ export type Effect =
   | { type: 'COMPONENT_DID_UPDATE' }
   | { type: 'COMPONENT_DID_CATCH' }
   | { type: 'CALLBACK', name: string }
-  | { type: 'CREATE_CALLBACK', name: string }
+  | { type: 'CREATE_CALLBACKS', callbacks: { [name: string]: Function } }
 
 export const SET_STATE = 'SET_STATE'
 export const FORCE_UPDATE = 'FORCE_UPDATE'
@@ -25,7 +25,7 @@ export const COMPONENT_WILL_UPDATE = 'COMPONENT_WILL_UPDATE'
 export const COMPONENT_DID_UPDATE = 'COMPONENT_DID_UPDATE'
 export const COMPONENT_DID_CATCH = 'COMPONENT_DID_CATCH'
 export const CALLBACK = 'CALLBACK'
-export const CREATE_CALLBACK = 'CREATE_CALLBACK'
+export const CREATE_CALLBACKS = 'CREATE_CALLBACKS'
 
 export const setState = (state: Object) => ({
   type: SET_STATE,
@@ -71,9 +71,9 @@ export const componentDidCatch = () => ({
 
 export const oneOf = (...args: Array<Effect>) => args
 
-export const createHandler = (name: string) => ({
-  type: CREATE_CALLBACK,
-  name
+export const createHandlers = (callbacks: { [name: string]: Function }) => ({
+  type: CREATE_CALLBACKS,
+  callbacks
 })
 
 export const handler = (name: string) => ({

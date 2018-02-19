@@ -64,18 +64,18 @@ describe('effects', () => {
   })
 
   it('should create a createHandler effect', () => {
-    const mockHandlerName = 'handlerName'
-    expect(effects.createHandler(mockHandlerName)).toEqual({
-      type: 'CREATE_CALLBACK',
-      name: mockHandlerName
+    const mockHandlers = { handlerName: () => 'test' }
+    expect(effects.createHandlers(mockHandlers)).toEqual({
+      type: 'CREATE_CALLBACKS',
+      callbacks: mockHandlers
     })
   })
 
   it('should create a handler effect', () => {
-    const mockHandlerName = 'handlerName'
-    expect(effects.handler(mockHandlerName)).toEqual({
+    const mockHandlers = { handlerName: () => 'test' }
+    expect(effects.handler('handlerName')).toEqual({
       type: 'CALLBACK',
-      name: mockHandlerName
+      name: 'handlerName'
     })
   })
 })

@@ -54,10 +54,10 @@ const routine = (gen: () => Routine) => (
       this.nextIf(effect.COMPONENT_DID_CATCH)
     }
 
-    performCallback(name: string, params: any) {
+    performCallback(name: string, result: any) {
       const eff = isEffect(this.effect, effect.CALLBACK)
       if (eff && eff.name === name) {
-        this.next(eff, params)
+        this.next(eff, result)
       }
     }
 
@@ -68,7 +68,7 @@ const routine = (gen: () => Routine) => (
       }
     }
 
-    next(currentEff: ?Effect, params: ?any): mixed {
+    next(currentEff: ?Effect, result: ?any): mixed {
       // Nothing to be done if our generator is finished
       if (this.done) {
         return
@@ -79,11 +79,13 @@ const routine = (gen: () => Routine) => (
         props: this.props,
         state: this.state,
         handlers: this.handlers,
-        value: null
+        result: undefined
       }
-      if (currentEff && currentEff.type == effect.CALLBACK) {
-        Object.assign(args, { value: params })
+
+      if (currentEff && currentEff.type === effect.CALLBACK) {
+        Object.assign(args, { result })
       }
+
       const { done, value } = this.routine.next(args)
       this.done = done
 
@@ -105,12 +107,16 @@ const routine = (gen: () => Routine) => (
         // $FlowFixMe: re-binding SCU on-the-fly considered harmful?
         this.shouldComponentUpdate = value.callback.bind(this)
         this.next(value)
-      } else if (value.type === effect.CREATE_CALLBACK) {
-        const name = value.name
-        // Create the callback
-        this.handlers[name] = effect.handler(name)
-        this.handlerFunctions[name] = (...params: any) => {
-          this.performCallback(name, params)
+      } else if (value.type === effect.CREATE_CALLBACKS) {
+        const { callbacks } = value
+        for (let name in callbacks) {
+          if (callbacks.hasOwnProperty(name)) {
+            this.handlers[name] = effect.handler(name)
+            this.handlerFunctions[name] = (...params: any) => {
+              const result = callbacks[name](...params)
+              this.performCallback(name, result)
+            }
+          }
         }
         this.next(value)
       }

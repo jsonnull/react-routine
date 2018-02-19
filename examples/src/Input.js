@@ -3,7 +3,7 @@ import {
   routine,
   setState,
   componentWillMount,
-  createHandler
+  createHandlers
 } from '../../dist/react-routine'
 
 const controller = function*() {
@@ -14,15 +14,13 @@ const controller = function*() {
   yield setState({ value: initial.props.value })
 
   // Create a change handler we can listen to
-  const { handlers } = yield createHandler('onChange')
+  const { handlers } = yield createHandlers({ onChange: e => e.target.value })
 
   while (true) {
     // Wait for change handler
-    const result = yield handlers.onChange
-    // Pull out the event from the handler
-    const [event] = result.value
+    const { result } = yield handlers.onChange
     // Set the new state
-    yield setState({ value: event.target.value })
+    yield setState({ value: result })
   }
 }
 
