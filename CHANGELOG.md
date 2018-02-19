@@ -1,6 +1,6 @@
 # Change Log
 
-## Unreleased
+## 0.1.0 (February 18, 2018)
 
 ### Major Changes
 
