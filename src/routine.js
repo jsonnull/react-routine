@@ -103,7 +103,7 @@ const routine = (gen: () => Routine) => (
         this.next(value)
       } else if (value.type === effect.SHOULD_COMPONENT_UPDATE) {
         // $FlowFixMe: re-binding SCU on-the-fly considered harmful?
-        this.shouldComponentUpdate = effect.callback.bind(this)
+        this.shouldComponentUpdate = value.callback.bind(this)
         this.next(value)
       } else if (value.type === effect.CREATE_CALLBACK) {
         const name = value.name
