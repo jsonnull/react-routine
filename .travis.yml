@@ -10,6 +10,6 @@ before_install:
 - export PATH="$HOME/.yarn/bin:$PATH"
 
 script:
-- npm run flow
 - npm run test:coverage
 - npm run build
+- npm run flow
