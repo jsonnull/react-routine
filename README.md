@@ -10,19 +10,31 @@ An alternate way to write React components, focusing on simple control flow and 
 
 ```JavaScript
 import React from 'react'
-import { routine, setState, componentWillMount } from 'react-routine'
+import { routine, setState, componentWillMount, createHandlers } from 'react-routine'
 
+// A simple controlled input
 const controller = function*() {
-  // Wait for component to begin mounting
-  yield componentWillMount()
+  // Wait for initial mount before setting state
+  const initial = yield componentWillMount()
 
-  // Set some state
-  yield setState({ title: 'React Routine' })
+  // Copy `value` prop into state
+  yield setState({ value: initial.props.value })
+
+  // Create a callback function which returns an input value
+  const { handlers } = yield createHandlers({ onChange: e => e.target.value })
+
+  // Create an event loop
+  while (true) {
+    // Any time our callback is called...
+    const { result } = yield handlers.onChange
+    // ...update the value in state
+    yield setState({ value: result })
+  }
 }
 
-const Header = props => <h1>{props.title}</h1>
+const Input = props => <input onChange={props.onChange} value={props.value} />
 
-export default routine(controller)(Header)
+export default routine(controller)(Input)
 ```
 
 ## Installation
