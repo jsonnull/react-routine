@@ -4,9 +4,22 @@
 [![Coverage Status](https://coveralls.io/repos/github/jsonnull/react-routine/badge.svg?branch=master)](https://coveralls.io/github/jsonnull/react-routine?branch=master)
 [![npm version](https://img.shields.io/npm/v/react-routine.svg)](https://www.npmjs.com/package/react-routine)
 
-An alternate way to write React components, focusing on simple control flow and developer experience.
+`react-routine` is a simple alternative API for writing stateful React
+components. With it you can
 
-**Unstable, expect breaking changes in the near future.**
+- Simplify data flow in your component through chronological execution
+- Declare explicity when you expect lifecycle events and callbacks 
+- Write components that are short and easy to reason about
+
+## Getting Started
+
+```sh
+yarn add react-routine
+
+# npm install --save react-routine
+```
+
+### Example Usage
 
 ```JavaScript
 import React from 'react'
@@ -35,15 +48,9 @@ const Input = props => <input onChange={props.onChange} value={props.value} />
 export default routine(controller)(Input)
 ```
 
-## Installation
-
-```sh
-yarn add react-routine
-
-# npm install --save react-routine
-```
-
 ## Documentation
+
+**Note**: `react-routine` is currently unstable, expect some breaking changes
 
  - [Getting Started](docs/getting-started.md)
 
