@@ -13,7 +13,7 @@ components. With it you can:
 
 **Note**: `react-routine` is currently unstable, expect some breaking changes
 
-## Getting Started
+## Installation
 
 ```sh
 yarn add react-routine
