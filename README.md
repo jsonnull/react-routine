@@ -43,11 +43,10 @@ yarn add react-routine
 # npm install --save react-routine
 ```
 
+## Documentation
+
+ - [Getting Started](docs/getting-started.md)
+
 ## Examples
 
  - Basic ([source](examples/))
-
-
-## Documentation
-
- - Forthcoming, stay tuned.
