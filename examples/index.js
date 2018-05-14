@@ -6,7 +6,7 @@ import {
   setState,
   componentWillMount,
   createHandlers
-} from '../dist/react-routine'
+} from '../dist/react-routine.umd'
 
 const controller = function*() {
   // Get the initial props
